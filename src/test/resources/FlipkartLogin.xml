@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Flipkart Login Suite">
+    <test name="Flipkart Login">
+        <classes>
+            <class name="com.tests.ProductSearch">
+                <methods>
+                    <include name="verifyPage"/>
+                    <include name="login"/>
+                    <include name="verifyUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

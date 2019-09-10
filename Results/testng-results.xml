@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default Suite" duration-ms="10184" started-at="2019-09-09T04:22:21Z" finished-at="2019-09-09T04:22:31Z">
+    <groups>
+    </groups>
+    <test name="FlipKartAutomation" duration-ms="10184" started-at="2019-09-09T04:22:21Z" finished-at="2019-09-09T04:22:31Z">
+      <class name="com.tests.LoginRunner">
+        <test-method status="PASS" signature="initiateTest()[pri:0, instance:com.tests.LoginRunner@3f3afe78]" name="initiateTest" is-config="true" duration-ms="6193" started-at="2019-09-09T04:22:14Z" finished-at="2019-09-09T04:22:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initiateTest -->
+        <test-method status="PASS" signature="testConfigs(org.testng.ITestContext)[pri:0, instance:com.tests.LoginRunner@3f3afe78]" name="testConfigs" is-config="true" duration-ms="139" started-at="2019-09-09T04:22:21Z" finished-at="2019-09-09T04:22:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.com.tests.LoginRunner@13d9b21f]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testConfigs -->
+        <test-method status="PASS" signature="classRunner()[pri:0, instance:com.tests.LoginRunner@3f3afe78]" name="classRunner" is-config="true" duration-ms="21" started-at="2019-09-09T04:22:21Z" finished-at="2019-09-09T04:22:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- classRunner -->
+        <test-method status="PASS" signature="initiateDrivers()[pri:0, instance:com.tests.LoginRunner@3f3afe78]" name="initiateDrivers" is-config="true" duration-ms="1" started-at="2019-09-09T04:22:21Z" finished-at="2019-09-09T04:22:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initiateDrivers -->
+        <test-method status="PASS" signature="verifyPage()[pri:0, instance:com.tests.LoginRunner@3f3afe78]" name="verifyPage" duration-ms="14" started-at="2019-09-09T04:22:21Z" finished-at="2019-09-09T04:22:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyPage -->
+        <test-method status="PASS" signature="initiateDrivers()[pri:0, instance:com.tests.LoginRunner@3f3afe78]" name="initiateDrivers" is-config="true" duration-ms="2" started-at="2019-09-09T04:22:21Z" finished-at="2019-09-09T04:22:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initiateDrivers -->
+        <test-method status="PASS" signature="login()[pri:0, instance:com.tests.LoginRunner@3f3afe78]" name="login" duration-ms="3364" started-at="2019-09-09T04:22:21Z" depends-on-methods="com.tests.LoginRunner.verifyPage" finished-at="2019-09-09T04:22:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="initiateDrivers()[pri:0, instance:com.tests.LoginRunner@3f3afe78]" name="initiateDrivers" is-config="true" duration-ms="1" started-at="2019-09-09T04:22:24Z" finished-at="2019-09-09T04:22:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initiateDrivers -->
+        <test-method status="PASS" signature="verifyUser()[pri:0, instance:com.tests.LoginRunner@3f3afe78]" name="verifyUser" duration-ms="6594" started-at="2019-09-09T04:22:24Z" depends-on-methods="com.tests.LoginRunner.login" finished-at="2019-09-09T04:22:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUser -->
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:com.tests.LoginRunner@3f3afe78]" name="closeBrowser" is-config="true" duration-ms="25" started-at="2019-09-09T04:22:31Z" finished-at="2019-09-09T04:22:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.tests.LoginRunner@3f3afe78]" name="tearDown" is-config="true" duration-ms="435" started-at="2019-09-09T04:22:31Z" finished-at="2019-09-09T04:22:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.tests.LoginRunner -->
+    </test> <!-- FlipKartAutomation -->
+  </suite> <!-- Default Suite -->
+</testng-results>

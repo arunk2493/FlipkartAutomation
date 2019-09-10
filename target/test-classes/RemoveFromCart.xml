@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Flipkart Remove">
+    <test name="Flipkart Remove Product">
+            <classes>
+                <class name="com.tests.PreRunner">
+                    <methods>
+                        <include name="verifyPage"/>
+                        <include name="login"/>
+                        <include name="verifyUser"/>
+                        <include name="removeProduct"/>
+                    </methods>
+                </class>
+            </classes>
+    </test>
+</suite>

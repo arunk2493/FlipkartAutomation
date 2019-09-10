@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default Suite]">
+  <test thread-count="5" name="FlipKartAutomation(failed)">
+    <classes>
+      <class name="com.tests.LoginRunner">
+        <methods>
+          <include name="verifyUser"/>
+          <include name="tearDown"/>
+          <include name="login"/>
+          <include name="classRunner"/>
+          <include name="verifyPage"/>
+          <include name="testConfigs"/>
+          <include name="initiateDrivers"/>
+          <include name="closeBrowser"/>
+          <include name="initiateTest"/>
+        </methods>
+      </class> <!-- com.tests.LoginRunner -->
+    </classes>
+  </test> <!-- FlipKartAutomation(failed) -->
+</suite> <!-- Failed suite [Default Suite] -->

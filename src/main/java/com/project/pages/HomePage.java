@@ -3,14 +3,11 @@ package com.project.pages;
 import com.aventstack.extentreports.Status;
 import com.project.base.BaseClass;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 import java.io.IOException;
-import java.util.List;
 
 public class HomePage extends BaseClass {
     @FindBy(linkText = "Login & Signup")
@@ -30,7 +27,7 @@ public class HomePage extends BaseClass {
 
         }else{
             tests.log(Status.FAIL,"Title Verification");
-            capture(driver);
+            //capture(driver);
         }
     }
     public void enterCredentials() throws IOException {
@@ -47,7 +44,7 @@ public class HomePage extends BaseClass {
             tests.log(Status.PASS,"Login");
         }catch (Exception e){
             tests.log(Status.FAIL,"Login");
-            capture(driver);
+            //capture(driver);
             e.printStackTrace();
         }
     }
@@ -61,7 +58,7 @@ public class HomePage extends BaseClass {
         else{
             Assert.assertFalse(verifyLoginStatus);
             tests.log(Status.FAIL,"Verify User");
-            capture(driver);
+            //capture(driver);
         }
     }
     public void logoutUser(){

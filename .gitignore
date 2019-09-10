@@ -1,3 +1,8 @@
 /Reports
 /Results
 /Screenshots
+.DS_Store
+Reports/.DS_Store
+target/classes/com/project/base/BaseClass.class
+target/classes/com/project/base/ReusableMethods.class
+target/classes/com/project/pages/HomePage.class

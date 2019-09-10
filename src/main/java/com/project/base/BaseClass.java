@@ -72,7 +72,7 @@ public class BaseClass extends ReusableMethods {
         driver.quit();
         reports.flush();
     }
-    public String capture(WebDriver driver) throws IOException
+    /*public String capture(WebDriver driver) throws IOException
     {
         String suitename = suites.getSuite().getName().toString();
         String timeValue = getTimeStamp();
@@ -85,7 +85,5 @@ public class BaseClass extends ReusableMethods {
         File destination = new File(dest);
         FileUtils.copyFile(source, destination);
         return dest;
-    }
-
-
+    }*/
 }

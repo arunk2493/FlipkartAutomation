@@ -71,38 +71,6 @@ public class ReusableMethods {
         String timeDate = dtf.format(now).toString();
         return timeDate;
     }
-
-    public List<String> addItemName(String name){
-        itemName.add(name);
-        return itemName;
-    }
-    public List<String> addItemPrice(String price){
-        itemPrice.add(price);
-        return itemPrice;
-    }
-    public List<String> addItemDetails(String Description){
-        itemDescription.add(Description);
-        return itemDescription;
-    }
-    public Map<String, List<String>> productDetails(List l3){
-        productDescription.put("Description",l3);
-        return productDescription;
-    }
-    public Map<String,List<String>> verifyItemDetails(List l1,List l2){
-        itemDetails.put("Productname",l1);
-        itemDetails.put("Productprice",l2);
-        return itemDetails;
-    }
-    public List<String> verifyDescription(Map<String, List<String>> productDescription ){
-        for (Map.Entry<String, List<String>> entry : itemDetails.entrySet()) {
-            key = entry.getKey();
-            values = entry.getValue();
-            System.out.println("Key = " + key);
-            System.out.println("Values = " + values);
-
-        }
-        return values;
-    }
     public void scrollToElement(WebElement we){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);",we);

@@ -28,7 +28,6 @@ public class BaseClass extends ReusableMethods {
                 System.setProperty("webdriver.chrome.driver",path+"/drivers/chromedriver");
                 driver = new ChromeDriver();
                 driver.get(getValue("URL"));
-
                 break;
             case "FireFox":
                 System.setProperty("webdriver.gecko.driver",path+"/drivers/geckodriver");

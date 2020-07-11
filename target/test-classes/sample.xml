@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Flipkart Login Suite">
+    <test name="Flipkart Login">
+        <classes>
+            <class name="com.tests.AutomationRunner">
+                <methods>
+                    <include name="verifyPagePage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

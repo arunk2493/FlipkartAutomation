@@ -52,11 +52,11 @@ public class BaseClass extends ReusableMethods {
        reports.attachReporter(reporter);
        tests = reports.createTest(testName);
     }
-    @BeforeClass
+    /*@BeforeClass
     public WebDriver classRunner(){
         PageFactory.initElements(driver,this);
         return driver;
-    }
+    }*/
     @BeforeMethod
     public WebDriver initiateDrivers()
     {

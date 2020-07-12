@@ -1,12 +1,87 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Flipkart Login Suite">
-    <test name="Flipkart Login">
+<suite name="Ecommerce Automation">
+    <test name="User creation">
         <classes>
             <class name="com.tests.AutomationRunner">
                 <methods>
-                    <include name="verifyPagePage"/>
+                    <include name="signInUser"/>
                 </methods>
             </class>
         </classes>
     </test>
+    <test name="Account Validation">
+        <classes>
+            <class name="com.tests.AutomationRunner">
+                <methods>
+                    <include name="signInUser"/>
+                    <include name="enterBillingInfo"/>
+                    <include name="zipCodeValidationInvalid"/>
+                    <include name="validZipCodeValidation"/>
+                    <include name="registerUserAccount"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Invalid SignIn">
+        <classes>
+            <class name="com.tests.AutomationRunner">
+                <methods>
+                    <include name="signInInvalid"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Valid SignIn">
+        <classes>
+            <class name="com.tests.AutomationRunner">
+                <methods>
+                    <include name="signInValid"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Search Product">
+        <classes>
+            <class name="com.tests.AutomationRunner">
+                <methods>
+                    <include name="signInValid"/>
+                    <include name="searchProducts"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Select Manufacturers and Proceed Checkout">
+        <classes>
+            <class name="com.tests.AutomationRunner">
+                <methods>
+                    <include name="signInValid"/>
+                    <include name="searchProducts"/>
+                    <include name="selectManufacturers1AndProceedToCheckout"/>
+                    <include name="selectManufacturers2AndProceedToCheckout"/>
+                    <include name="selectManufacturers3AndProceedToCheckout"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+     <test name="Review Product">
+         <classes>
+             <class name="com.tests.AutomationRunner">
+                 <methods>
+                     <include name="signInValid"/>
+                     <include name="searchProducts"/>
+                     <include name="reviewProduct"/>
+                 </methods>
+             </class>
+         </classes>
+     </test>
+     <test name="Share Product in Social Media">
+         <classes>
+             <class name="com.tests.AutomationRunner">
+                 <methods>
+                     <include name="signInValid"/>
+                     <include name="shareToSocialMedia"/>
+                 </methods>
+             </class>
+         </classes>
+     </test>
 </suite>

@@ -9,11 +9,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
+import org.testng.ITestMethodFinder;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.internal.Utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class BaseClass extends ReusableMethods {
 
@@ -42,23 +45,14 @@ public class BaseClass extends ReusableMethods {
 
         String suitename = suite.getSuite().getName().toString();
         String timeValue = getTimeStamp();
-        String suiteFolder = suitename+"_"+timeValue;
-        createDirectory(suiteFolder);
         String testName = suite.getCurrentXmlTest().getName().toString();
-        String htmlName = testName+"_"+timeValue+".html";
-       reporter = new ExtentHtmlReporter(path+"/Reports/"+suiteFolder+"/"+htmlName);
-       reports = new ExtentReports();
-       reports.attachReporter(reporter);
-       tests = reports.createTest(testName);
+        System.out.println("The current Execution is "+suitename+" and the test is "+testName+ " at "+timeValue);
     }
-    /*@BeforeClass
-    public WebDriver classRunner(){
-        PageFactory.initElements(driver,this);
-        return driver;
-    }*/
     @BeforeMethod
-    public WebDriver initiateDrivers()
+    public WebDriver initiateDrivers(ITestResult result)
     {
+        String methodname = result.getMethod().getMethodName().toString();
+        System.out.println("The current method is: "+methodname);
         PageFactory.initElements(driver,this);
         return driver;
     }
@@ -69,20 +63,5 @@ public class BaseClass extends ReusableMethods {
     @AfterSuite
     public void tearDown(){
         driver.quit();
-        reports.flush();
     }
-    /*public String capture(WebDriver driver) throws IOException
-    {
-        String suitename = suites.getSuite().getName().toString();
-        String timeValue = getTimeStamp();
-        String suiteFolder = suitename+"_"+timeValue;
-        String testName = suites.getCurrentXmlTest().getName().toString();
-        String screenShotNames = testName+"_"+timeValue;
-        TakesScreenshot ts = (TakesScreenshot)driver;
-        File source = ts.getScreenshotAs(OutputType.FILE);
-        String dest = path+"/Screenshots/"+suiteFolder+"/"+screenShotNames+".jpeg";
-        File destination = new File(dest);
-        FileUtils.copyFile(source, destination);
-        return dest;
-    }*/
 }

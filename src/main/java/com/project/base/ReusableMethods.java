@@ -8,8 +8,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.internal.Utils;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,12 +20,18 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.List;
 
 public class ReusableMethods {
 
     public WebDriver driver;
     public String propvalue = null;
     public String path = System.getProperty("user.dir");
+    public String firstName=null;
+    public String lastName = null;
+    public String userName = null;
+    public String windowName = null;
+    public String newURL = null;
     Properties prop = new Properties();
     public ExtentReports reports = null;
     public ExtentTest tests = null;
@@ -58,13 +67,6 @@ public class ReusableMethods {
         }
         return propvalue;
     }
-
-    public void createDirectory(String suiteName){
-        File f = new File(suitePath+"/"+suiteName);
-        if(!f.exists()){
-            f.mkdir();
-        }
-    }
     public String getTimeStamp(){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
         LocalDateTime now = LocalDateTime.now();
@@ -75,17 +77,30 @@ public class ReusableMethods {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);",we);
     }
-    public void switchTab(WebDriver driver,int a){
-        ArrayList<String> openTabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(openTabs.get(a));
+    public void waitForPageLoad(){
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
-    public void closeTab(WebDriver driver){
-        ArrayList<String> openTabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(openTabs.get(1));
-        driver.close();
+    public void waitForWebElement(WebElement e){
+        WebDriverWait wait = new WebDriverWait(driver,30);
+        wait.until(ExpectedConditions.visibilityOf(e));
     }
-    public void hoverElement(WebElement we,WebDriver driver){
-        Actions a = new Actions(driver);
-        a.moveToElement(we).build().perform();
+    public void hoverElement(WebElement we,WebDriver d){
+        Actions a = new Actions(d);
+        a.moveToElement(we).perform();
     }
+    public void switchWindows(WebDriver d){
+        windowName = d.getWindowHandle();
+        d.switchTo().window(windowName);
+        newURL = d.getTitle();
+    }
+    public void closeWindows(WebDriver d){
+        d.close();
+        windowName = d.getWindowHandle();
+        d.switchTo().window(windowName);
+    }
+
 }

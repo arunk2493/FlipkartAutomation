@@ -1,10 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="MultipleSuite">
-    <suite-files>
-        <suite-file path="FlipkartLogin.xml"></suite-file>
-        <suite-file path="FlipkartProductSearch.xml"></suite-file>
-        <suite-file path="FlipkartCart.xml"></suite-file>
-        <suite-file path="RemoveFromCart.xml"></suite-file>
-    </suite-files>
+<suite name="MultipleSuite" thread-count="2" parallel="classes">
+    <test name="Flipkart Login">
+        <classes>
+            <class name="com.tests.LoginRunner">
+                <methods>
+                    <include name="verifyPage"/>
+                    <include name="login"/>
+                    <include name="verifyUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Flipkart Product Search">
+        <parameter name="productNumber" value="4"></parameter>
+        <classes>
+            <class name="com.tests.ProductSearch">
+                <methods>
+                    <include name="verifyPage"/>
+                    <include name="login"/>
+                    <include name="verifyUser"/>
+                    <include name="searchProduct"/>
+                    <include name="selectProductPage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <!--<test name="Flipkart Product Select">
+        <parameter name="productNumber" value="5"></parameter>
+        <classes>
+            <class name="com.tests.ProductSearch">
+                <methods>
+                    <include name="verifyPage"/>
+                    <include name="login"/>
+                    <include name="verifyUser"/>
+                    <include name="searchProduct"/>
+                    <include name="selectProductPage"/>
+                    <include name="verifyProduct"/>
+                    <include name="verifyProductCart"/>
+                    <include name="cartItemCount"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Flipkart Remove Product">
+        <classes>
+            <class name="com.tests.PreRunner">
+                <methods>
+                    <include name="verifyPage"/>
+                    <include name="login"/>
+                    <include name="verifyUser"/>
+                    <include name="removeProduct"/>
+                </methods>
+            </class>
+        </classes>
+    </test>-->
 </suite>

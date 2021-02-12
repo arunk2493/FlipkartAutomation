@@ -1,5 +1,6 @@
 package com.project.pages;
 
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -8,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.util.List;
 
 public class SearchResultsPage extends HomePage {
@@ -41,24 +43,34 @@ public class SearchResultsPage extends HomePage {
     public List<WebElement> linkRemoveItem;
 
 
-    public String searchProduct(String searchItem) throws InterruptedException {
-        searchItems = getValue(searchItem);
-        txtSearch.sendKeys(searchItems);
-        txtSearch.sendKeys(Keys.ENTER);
-        Thread.sleep(1000);
+    public String searchProduct(String searchItem) throws IOException {
+        String path = capture(driver);
+        try {
+            searchItems = getValue(searchItem);
+            txtSearch.sendKeys(searchItems);
+            txtSearch.sendKeys(Keys.ENTER);
+            Thread.sleep(1000);
+
+            tests.log(Status.PASS, "Product Name Search is successful", MediaEntityBuilder.createScreenCaptureFromPath(path,"Product").build());
+
+        } catch (InterruptedException | IOException e) {
+            tests.log(Status.FAIL, "Product Name Search is not successful",MediaEntityBuilder.createScreenCaptureFromPath(path,"Product").build());
+            e.printStackTrace();
+        }
         return searchItems;
     }
-    public String selectProduct(int randomProduct) throws InterruptedException {
+    public String selectProduct(int randomProduct) throws InterruptedException, IOException {
+        String path = capture(driver);
         List<WebElement> w=null;
         WebElement w2 = null;
         WebElement w3 = null;
         if(randomProduct!=1){
-            w = driver.findElements(By.xpath("//div[@class='_3O0U0u']/descendant::a[1]/div[2]/div[1]/div[1]/../../.."));
+            w = driver.findElements(By.xpath("//a[text()='Home']/../../../../../../div"));
             searchRecords = w.size();
             try{
                 if(randomProduct<=searchRecords){
-                    String path =w.get(randomProduct).getText();
-                    String prodName = path.replaceAll("\n",";");
+                    String paths =w.get(randomProduct).getText();
+                    String prodName = paths.replaceAll("\n",";");
                     System.out.println(prodName);
                     String[] prods = prodName.split(";");
                     productNameValue = prods[0].toString();
@@ -68,14 +80,17 @@ public class SearchResultsPage extends HomePage {
                     scrollToElement(w3);
                     WebElement w4 = driver.findElement(By.xpath("//div[contains(text(),'"+productNameValue+"')]/../../.."));
                     w4.click();
+                    tests.log(Status.PASS, "Product Selection is successful", MediaEntityBuilder.createScreenCaptureFromPath(path,"Selection").build());
                 }
             }
             catch (Exception e){
                 System.out.println("Enter the Product index within "+searchRecords+" range.");
+                tests.log(Status.FAIL, "Product Selection is not successful", MediaEntityBuilder.createScreenCaptureFromPath(path,"Selection").build());
             }
         }
         else{
             clickProductName.click();
+            tests.log(Status.PASS, "Product Selection is successful", MediaEntityBuilder.createScreenCaptureFromPath(path,"Selection").build());
         }
         Thread.sleep(5000);
         return searchPageProductName;

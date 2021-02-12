@@ -28,24 +28,14 @@ public class ReusableMethods {
     public ExtentTest tests = null;
     public ExtentHtmlReporter reporter = null;
     public String suitePath = path+"/Reports";
-    private Utils FileUtils;
     public String searchItems = null;
-    public int itemCount;
-    public Map<String, List<String>> productDescription = new HashMap<String, List<String>>();
-    public Map<String,List<String>> itemDetails = new HashMap<String, List<String>>();
-    public List<String> itemName = new ArrayList<String>();
-    public List<String> itemPrice = new ArrayList<String>();
-    public List<String> itemDescription = new ArrayList<String>();
-    public String item =null;
-    public String key = null;
-    public List<String> values = null;
     public String searchPageProductName = null;
     public String productNameValue = null;
     public String productPriceValue = null;
     public int cartSize;
     public int searchRecords;
-    public String b=null;
     public String cartCount=null;
+    public String testName=null;
 
     public String getValue(String keyValue)  {
         String propFile =path+"//src//main//resources//data.properties";

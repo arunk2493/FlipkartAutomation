@@ -29,11 +29,11 @@ public class BaseClass extends ReusableMethods {
                 driver = new ChromeDriver();
                 driver.get(getValue("URL"));
                 break;
-            case "FireFox":
+            /*case "FireFox":
                 System.setProperty("webdriver.gecko.driver",path+"/drivers/geckodriver");
                 driver = new FirefoxDriver();
                 driver.get(getValue("URL"));
-                break;
+                break;*/
         }
         return driver;
     }
@@ -42,9 +42,9 @@ public class BaseClass extends ReusableMethods {
 
         String suitename = suite.getSuite().getName().toString();
         String timeValue = getTimeStamp();
-        String suiteFolder = suitename+"_"+timeValue;
+        String suiteFolder = suitename;
         createDirectory(suiteFolder);
-        String testName = suite.getCurrentXmlTest().getName().toString();
+        testName = suite.getCurrentXmlTest().getName().toString();
         String htmlName = testName+"_"+timeValue+".html";
        reporter = new ExtentHtmlReporter(path+"/Reports/"+suiteFolder+"/"+htmlName);
        reports = new ExtentReports();
@@ -65,24 +65,26 @@ public class BaseClass extends ReusableMethods {
     @AfterTest
     public void closeBrowser(){
         driver.close();
+        driver.quit();
     }
     @AfterSuite
     public void tearDown(){
-        driver.quit();
+
         reports.flush();
+        reporter.flush();
     }
-    /*public String capture(WebDriver driver) throws IOException
+    public String capture(WebDriver driver) throws IOException
     {
-        String suitename = suites.getSuite().getName().toString();
+
         String timeValue = getTimeStamp();
-        String suiteFolder = suitename+"_"+timeValue;
-        String testName = suites.getCurrentXmlTest().getName().toString();
         String screenShotNames = testName+"_"+timeValue;
         TakesScreenshot ts = (TakesScreenshot)driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
-        String dest = path+"/Screenshots/"+suiteFolder+"/"+screenShotNames+".jpeg";
+        String screenShotFolder = path+"/Screenshots/"+testName+"/";
+        createDirectory(screenShotFolder);
+        String dest = path+"/Screenshots/"+testName+"/"+screenShotNames+".png";
         File destination = new File(dest);
         FileUtils.copyFile(source, destination);
         return dest;
-    }*/
+    }
 }

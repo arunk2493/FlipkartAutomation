@@ -8,12 +8,8 @@ import java.io.IOException;
 
 public class ProductSearch extends LoginRunner {
     @Test(priority = 4)
-    public void searchProduct(){
-        try {
-            searchProduct("productName");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public void searchProductPage() throws IOException {
+        searchProduct("productName");
     }
     @Test(priority = 5)
     @Parameters("productNumber")

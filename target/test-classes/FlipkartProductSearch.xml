@@ -8,7 +8,7 @@
                             <include name="verifyPage"/>
                             <include name="login"/>
                             <include name="verifyUser"/>
-                            <include name="searchProduct"/>
+                            <include name="searchProductPage"/>
                             <include name="selectProductPage"/>
                         </methods>
                     </class>

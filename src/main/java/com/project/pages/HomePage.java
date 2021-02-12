@@ -1,5 +1,6 @@
 package com.project.pages;
 
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.project.base.BaseClass;
 import org.openqa.selenium.By;
@@ -41,7 +42,9 @@ public class HomePage extends BaseClass {
             txtPassWord.sendKeys(getValue("Password"));
             btnLogin.click();
             Thread.sleep(3000);
-            tests.log(Status.PASS,"Login");
+            String path = capture(driver);
+            //tests.addScreenCaptureFromPath(path,"sample");
+            tests.log(Status.PASS,"Login", MediaEntityBuilder.createScreenCaptureFromPath(path).build());
         }catch (Exception e){
             tests.log(Status.FAIL,"Login");
             //capture(driver);

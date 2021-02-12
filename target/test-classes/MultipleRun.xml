@@ -4,11 +4,13 @@
     <test name="Flipkart Login">
         <classes>
             <class name="com.tests.LoginRunner">
+<!--
                 <methods>
                     <include name="verifyPage"/>
                     <include name="login"/>
                     <include name="verifyUser"/>
                 </methods>
+-->
             </class>
         </classes>
     </test>

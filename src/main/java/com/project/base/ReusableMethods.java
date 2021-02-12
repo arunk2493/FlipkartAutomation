@@ -36,6 +36,10 @@ public class ReusableMethods {
     public int searchRecords;
     public String cartCount=null;
     public String testName=null;
+    public String suiteFolder = null;
+    public String firstName=null;
+    public String lastName=null;
+    public String userName=null;
 
     public String getValue(String keyValue)  {
         String propFile =path+"//src//main//resources//data.properties";
@@ -77,5 +81,8 @@ public class ReusableMethods {
     public void hoverElement(WebElement we,WebDriver driver){
         Actions a = new Actions(driver);
         a.moveToElement(we).build().perform();
+    }
+    public void waitForPageLoad() throws InterruptedException {
+        Thread.sleep(5000);
     }
 }

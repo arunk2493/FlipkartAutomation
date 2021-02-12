@@ -2,7 +2,7 @@
 <suite name="Flipkart Login Suite">
     <test name="Flipkart Login">
         <classes>
-            <class name="com.tests.ProductSearch">
+            <class name="com.tests.LoginRunner">
                 <methods>
                     <include name="verifyPage"/>
                     <include name="login"/>

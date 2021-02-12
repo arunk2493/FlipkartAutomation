@@ -9,11 +9,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
+import org.testng.ITestMethodFinder;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.internal.Utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class BaseClass extends ReusableMethods {
 
@@ -29,11 +32,11 @@ public class BaseClass extends ReusableMethods {
                 driver = new ChromeDriver();
                 driver.get(getValue("URL"));
                 break;
-            /*case "FireFox":
+            case "FireFox":
                 System.setProperty("webdriver.gecko.driver",path+"/drivers/geckodriver");
                 driver = new FirefoxDriver();
                 driver.get(getValue("URL"));
-                break;*/
+                break;
         }
         return driver;
     }
@@ -42,47 +45,43 @@ public class BaseClass extends ReusableMethods {
 
         String suitename = suite.getSuite().getName().toString();
         String timeValue = getTimeStamp();
-        String suiteFolder = suitename;
+        suiteFolder = suitename;
         createDirectory(suiteFolder);
         testName = suite.getCurrentXmlTest().getName().toString();
         String htmlName = testName+"_"+timeValue+".html";
-       reporter = new ExtentHtmlReporter(path+"/Reports/"+suiteFolder+"/"+htmlName);
+       reporter = new ExtentHtmlReporter(suitePath+"/"+suiteFolder+"/"+htmlName);
        reports = new ExtentReports();
        reports.attachReporter(reporter);
        tests = reports.createTest(testName);
     }
-    /*@BeforeClass
-    public WebDriver classRunner(){
-        PageFactory.initElements(driver,this);
-        return driver;
-    }*/
     @BeforeMethod
-    public WebDriver initiateDrivers()
+    public WebDriver initiateDrivers(ITestResult result)
     {
+        String methodname = result.getMethod().getMethodName().toString();
+        System.out.println("The current method is: "+methodname);
         PageFactory.initElements(driver,this);
         return driver;
     }
     @AfterTest
-    public void closeBrowser(){
-        driver.close();
-        driver.quit();
+    public void closeReports(){
+
+        reports.flush();
     }
     @AfterSuite
     public void tearDown(){
+        driver.close();
+        driver.quit();
 
-        reports.flush();
-        reporter.flush();
     }
     public String capture(WebDriver driver) throws IOException
     {
-
         String timeValue = getTimeStamp();
+        //String testName = suites.getCurrentXmlTest().getName().toString();
         String screenShotNames = testName+"_"+timeValue;
+        createDirectory(suiteFolder);
         TakesScreenshot ts = (TakesScreenshot)driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
-        String screenShotFolder = path+"/Screenshots/"+testName+"/";
-        createDirectory(screenShotFolder);
-        String dest = path+"/Screenshots/"+testName+"/"+screenShotNames+".png";
+        String dest = path+"/Screenshots/"+suiteFolder+"/"+screenShotNames+".png";
         File destination = new File(dest);
         FileUtils.copyFile(source, destination);
         return dest;
